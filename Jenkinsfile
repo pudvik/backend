@@ -14,11 +14,10 @@ pipeline {
 
     }
     stages {
-        stage('test') {
+        stage('install depenecies') {
             steps {
                 sh """
-                echo "this is test"
-                ls -ltr
+                npm install
                 """
     
             }
