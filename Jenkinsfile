@@ -9,8 +9,7 @@ pipeline {
     }
     
     environment {
-        DEPLOY_TO = 'production'
-        GREETING = 'Good morning'
+        def appVersion = ''
 
     }
     stages {
@@ -18,7 +17,7 @@ pipeline {
             steps {
                 script {
                     def packagejson = readJSON file: 'package.json'
-                    def appVersion = packagejson.version
+                    appVersion = packagejson.version
                     echo "applicatio version : $appVersion"
 
                 }
@@ -33,6 +32,14 @@ pipeline {
                 echo "applicatio version : $appVersion"
                 """
     
+            }
+        }
+        stage('build') {
+            steps {
+                sh """
+                zip -r backend-${appVersion}.zip */ -x Jenkinsfile -x backend-${appVersion}.zip
+                """
+                ls -ltr
             }
         }
         
