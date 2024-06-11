@@ -10,7 +10,7 @@ pipeline {
     
     environment {
         def appVersion = ''
-        nexusUrl = nexus.daws78s.site
+        nexusUrl = 'nexus.daws78s.site'
 
     }
     stages {
