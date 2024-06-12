@@ -10,7 +10,7 @@ pipeline {
     
     environment {
         def appVersion = ''
-        nexusUrl = 'nexus.daws78s.site'
+        nexusUrl = 'http://35.153.142.179:8081/repository/backend/'
 
 
     }
@@ -66,6 +66,16 @@ pipeline {
                     )
                 }
                 
+            }
+        }
+        stage('Deploy'){
+            steps{
+                script{
+                    def params = [
+                        string(name: 'appVersion', value: "${appVersion}")
+                    ]
+                    build job: 'backend-deploy', parameters: params, wait: false
+                }
             }
         }
 
