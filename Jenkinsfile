@@ -10,7 +10,7 @@ pipeline {
     
     environment {
         def appVersion = ''
-        nexusUrl = 'http://35.153.142.179:8081/repository/backend/'
+        nexusUrl = 'nexus.daws78s.online:8081'
 
 
     }
@@ -39,7 +39,8 @@ pipeline {
         stage('build') {
             steps {
                 sh """
-                zip -r backend-${appVersion}.zip */ -x Jenkinsfile -x backend-${appVersion}.zip
+                
+                zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
                 ls -ltr
                 """
                 
