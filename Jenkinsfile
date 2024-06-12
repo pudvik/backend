@@ -10,7 +10,7 @@ pipeline {
     
     environment {
         def appVersion = ''
-        nexusUrl = 'nexus.daws78s.online:8081'
+        nexusUrl = '35.153.142.179:8081'
 
 
     }
